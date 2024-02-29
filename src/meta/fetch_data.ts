@@ -2,7 +2,8 @@ import axios from "axios";
 
 async function fetch_data(access_token:string) {
   try {
-    let meta_api_version: string = "v19.0"
+    let meta_api_version: string|undefined = process.env.META_API_VERSION
+    
     let fetch_fields: string[] = ["id", "first_name", "last_name"]
     let fetch_fields_concat: string = fetch_fields.join("%2C")
     
