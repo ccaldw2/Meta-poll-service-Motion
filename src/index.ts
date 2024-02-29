@@ -4,17 +4,19 @@ import fetch_data from "./meta/fetch_data";
 import yargs from 'yargs';
 
 
-dotenv.config()
-
-const options = yargs
-  .usage("Usage: -t <Access Token>")
-  .option("t", {alias:"token", describe:"access token", type:"string", demandOption: true})
-  .argv;
-
-// TODO: Move to args & Remove env
-const access_token: string|undefined = process.env.META_ACCESS_TOKEN
+async function main() {
+  dotenv.config()
 
 
-if (typeof access_token === "string") {
-  fetch_data(access_token)
+  const access_token: string|null = (process.argv.slice(2)[0] || null)
+
+  if (typeof access_token === "string") {
+    fetch_data(access_token)
+  } else {
+    console.log("Access token required to poll Facebook API")
+  }
+
 }
+
+
+main()
