@@ -24,6 +24,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
-    "@types/yargs": "^17.0.32"
+    "@types/yargs": "^17.0.32",
+    "limiter": "^2.1.0"
   }
 }
